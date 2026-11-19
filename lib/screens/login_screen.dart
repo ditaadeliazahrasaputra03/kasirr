@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../config/app_config.dart';
 import '../services/auth_service.dart';
+import '../services/backend_service.dart';
 import 'register_screen.dart';
 
 /// Layar login. Role pengguna menentukan layar berikutnya:
@@ -19,7 +20,26 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
   bool _isLoading = false;
+  bool _checkingBackend = false;
+  BackendHealth? _backendHealth;
   String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkBackend();
+  }
+
+  Future<void> _checkBackend() async {
+    setState(() => _checkingBackend = true);
+    final BackendHealth health = await BackendService.instance.checkHealth();
+    if (mounted) {
+      setState(() {
+        _backendHealth = health;
+        _checkingBackend = false;
+      });
+    }
+  }
 
   @override
   void dispose() {
@@ -61,6 +81,52 @@ class _LoginScreenState extends State<LoginScreen> {
     _emailController.text = email;
     _passwordController.text = '123456';
     setState(() => _error = null);
+  }
+
+  /// Kartu status koneksi ke backend Laravel (Apache/XAMPP).
+  Widget _buildBackendStatusCard(BuildContext context) {
+    final bool? online = _backendHealth?.online;
+    final Color color = online == true
+        ? Colors.green.shade50
+        : online == false
+            ? Colors.orange.shade50
+            : Colors.blueGrey.shade50;
+    final IconData icon = online == true
+        ? Icons.cloud_done_outlined
+        : online == false
+            ? Icons.cloud_off_outlined
+            : Icons.cloud_queue_outlined;
+
+    return Card(
+      color: color,
+      child: ListTile(
+        leading: _checkingBackend
+            ? const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : Icon(icon),
+        title: Text(
+          online == true
+              ? 'Backend terhubung'
+              : online == false
+                  ? 'Backend belum terhubung'
+                  : 'Memeriksa backend...',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          '${_backendHealth?.message ?? 'Menghubungi ${BackendConfig.baseUrl}'}'
+          '\n${BackendConfig.baseUrl}',
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+        trailing: IconButton(
+          tooltip: 'Periksa lagi',
+          icon: const Icon(Icons.refresh_outlined),
+          onPressed: _checkingBackend ? null : _checkBackend,
+        ),
+      ),
+    );
   }
 
   @override
@@ -126,7 +192,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ],
-              const SizedBox(height: 24),
+              const SizedBox(height: 12),
+              _buildBackendStatusCard(context),
+              const SizedBox(height: 20),
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,

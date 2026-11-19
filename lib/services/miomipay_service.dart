@@ -123,16 +123,16 @@ class MiomiPayService {
           .timeout(const Duration(seconds: 30));
     } on Exception catch (e) {
       throw Exception(
-        'Backend Laravel tidak terjangkau di ${BackendConfig.baseUrl} '
-        '(jalankan `php artisan serve --host=0.0.0.0 --port=8001` di '
-        'laptop DITA, pastikan HP satu jaringan Tailscale). Error: $e',
+        'Backend Laravel tidak terjangkau di ${BackendConfig.baseUrl}. '
+        'Pastikan Apache/XAMPP sudah berjalan dan HP berada di Wi-Fi yang '
+        'sama dengan komputer. Error: $e',
       );
     }
 
     if (response.statusCode != 200 && response.statusCode != 201) {
       throw Exception(
         'Backend menolak tagihan (HTTP ${response.statusCode}): '
-        '${response.body}',
+        '${_backendErrorMessage(response.body)}',
       );
     }
 
@@ -197,6 +197,21 @@ class MiomiPayService {
       status: (data['status'] ?? 'PENDING').toString(),
       isSimulation: false,
     );
+  }
+
+  /// Ambil pesan `message` dari respons error backend agar pesan yang
+  /// tampil di aplikasi mudah dipahami (mis. API key MiomiPay kosong).
+  String _backendErrorMessage(String body) {
+    try {
+      final Map<String, dynamic> json = jsonDecode(body) as Map<String, dynamic>;
+      final String? message = json['message'] as String?;
+      if (message != null && message.isNotEmpty) {
+        return message;
+      }
+    } catch (_) {
+      // Bukan JSON: tampilkan apa adanya.
+    }
+    return body;
   }
 
   String _description(List<OrderItem> items) {

@@ -1,1 +1,134 @@
-{"client":[{"api_key":[{"current_key":"AIzaSyDRlCbqGApg32HohG8LTGkf6lXAmAFyXeg"}],"client_info":{"android_client_info":{"package_name":"com.kasir.toko"},"mobilesdk_app_id":"1:640643704828:android:b00e35483ade647079f479"},"oauth_client":[{"client_id":"640643704828-p56edlcr30q6d8o9t372e1h1vomsj29c.apps.googleusercontent.com","client_type":3}],"services":{"appinvite_service":{"other_platform_oauth_client":[{"client_id":"640643704828-p56edlcr30q6d8o9t372e1h1vomsj29c.apps.googleusercontent.com","client_type":3}]}}}],"configuration_version":"1","project_info":{"project_id":"kasir-79d26","project_number":"640643704828","storage_bucket":"kasir-79d26.firebasestorage.app"}}
+{
+  "project_info": {
+    "project_number": "1078687193802",
+    "project_id": "tugas-b9b98",
+    "storage_bucket": "tugas-b9b98.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078687193802:android:e279707c30e2624caab233",
+        "android_client_info": {
+          "package_name": "com.example.dashboard_app4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078687193802-0d22idmn0p0bj3apjmgklmffcp4u5g2d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dashboard_app4",
+            "certificate_hash": "57684d8231ec584bf5f58fc373a7dd18d5aa9e7c"
+          }
+        },
+        {
+          "client_id": "1078687193802-dgtrvhgg6lnso25o7e82raf24j1bf8g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy8jzal2Znt7uHKoqITqqdCkCTU6uklro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078687193802-dgtrvhgg6lnso25o7e82raf24j1bf8g1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078687193802-87aka2b0ej3fiol9j0lnqfkl4girhf2p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dashboardApp4"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078687193802:android:aaa369a0356bb187aab233",
+        "android_client_info": {
+          "package_name": "com.example.kasir_warung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078687193802-bke4gephd1ijvcmnafpbn4lc4hs6asv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kasir_warung",
+            "certificate_hash": "8a35232bd33fa0dd90a16ca21776bfce3e945ae7"
+          }
+        },
+        {
+          "client_id": "1078687193802-dgtrvhgg6lnso25o7e82raf24j1bf8g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy8jzal2Znt7uHKoqITqqdCkCTU6uklro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078687193802-dgtrvhgg6lnso25o7e82raf24j1bf8g1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078687193802-87aka2b0ej3fiol9j0lnqfkl4girhf2p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dashboardApp4"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078687193802:android:cc590d3ab4084ca8aab233",
+        "android_client_info": {
+          "package_name": "com.kasir.toko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078687193802-dgtrvhgg6lnso25o7e82raf24j1bf8g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy8jzal2Znt7uHKoqITqqdCkCTU6uklro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078687193802-dgtrvhgg6lnso25o7e82raf24j1bf8g1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1078687193802-87aka2b0ej3fiol9j0lnqfkl4girhf2p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dashboardApp4"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

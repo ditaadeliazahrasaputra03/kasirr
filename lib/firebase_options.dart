@@ -1,8 +1,9 @@
 // Opsi Firebase untuk proyek ini.
 //
-// Diisi dari google-services.json proyek kasir-79d26 (setara hasil
-// `flutterfire configure`). File ini hanya ada di salinan laptop DITA;
-// salinan kode di tempat lain tetap memakai placeholder.
+// Diisi dari proyek tugas-b9b98:
+// - Android: aplikasi "POS Kasir" (package com.kasir.toko)
+// - Web    : aplikasi "POS Kasir Web"
+// Setara hasil `flutterfire configure`.
 
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
@@ -16,10 +17,7 @@ class DefaultFirebaseOptions {
 
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions belum dikonfigurasi untuk web - '
-        'jalankan flutterfire configure.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -37,10 +35,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDRlCbqGApg32HohG8LTGkf6lXAmAFyXeg',
-    appId: '1:640643704828:android:b00e35483ade647079f479',
-    messagingSenderId: '640643704828',
-    projectId: 'kasir-79d26',
-    storageBucket: 'kasir-79d26.firebasestorage.app',
+    apiKey: 'AIzaSyAy8jzal2Znt7uHKoqITqqdCkCTU6uklro',
+    appId: '1:1078687193802:android:cc590d3ab4084ca8aab233',
+    messagingSenderId: '1078687193802',
+    projectId: 'tugas-b9b98',
+    storageBucket: 'tugas-b9b98.firebasestorage.app',
+  );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBVcOa3QXc2U6pJINBMZIGxTRiYJke4yCk',
+    appId: '1:1078687193802:web:1ef230ec1eab65e0aab233',
+    messagingSenderId: '1078687193802',
+    projectId: 'tugas-b9b98',
+    authDomain: 'tugas-b9b98.firebaseapp.com',
+    storageBucket: 'tugas-b9b98.firebasestorage.app',
   );
 }

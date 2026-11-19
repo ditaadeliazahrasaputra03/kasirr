@@ -16,18 +16,36 @@ class AppConfig {
   static bool get isDemoMode => !firebaseReady;
 }
 
-/// Backend Laravel POS (E:\Tugas\pos-backend di laptop DITA).
+/// Backend Laravel POS (folder `C:\xampp\htdocs\kasirr_backend`).
+///
+/// Backend dijalankan lewat XAMPP/Apache, jadi alamatnya mengikuti folder
+/// di htdocs: `http://<IP-komputer>/kasirr_backend/public/api`.
+///
+/// Bisa dioverride tanpa mengubah kode, misalnya saat IP komputer berubah
+/// atau memakai emulator Android:
+///
+/// ```powershell
+/// flutter run --dart-define=API_BASE_URL=http://10.0.2.2/kasirr_backend/public/api
+/// flutter build apk --dart-define=API_BASE_URL=http://192.168.1.10/kasirr_backend/public/api
+/// ```
 class BackendConfig {
   /// Base URL API backend, tanpa garis miring di akhir.
-  /// IP Tailscale DITA supaya HP yang satu tailnet bisa menjangkaunya.
-  /// Kalau backend dijalankan di mesin lain, sesuaikan alamat ini.
-  static const String baseUrl = 'http://100.94.209.7:8001/api';
+  ///
+  /// Default memakai IP LAN komputer ini (192.168.0.5) supaya HP yang
+  /// tersambung ke Wi-Fi yang sama bisa langsung mengakses backend.
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://192.168.0.5/kasirr_backend/public/api',
+  );
 
   /// true = checkout memakai backend Laravel.
   /// false = fallback ke jalur langsung MiomiPay / simulasi.
   static const bool useBackend = true;
 
   static bool get isConfigured => useBackend && baseUrl.isNotEmpty;
+
+  /// Endpoint cek kesehatan backend: GET {baseUrl}/health.
+  static Uri get healthUri => Uri.parse('$baseUrl/health');
 }
 
 /// Jalur langsung ke API MiomiPay (fallback, hanya dipakai kalau

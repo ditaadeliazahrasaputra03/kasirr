@@ -176,10 +176,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         leading: const Icon(Icons.payments_outlined),
                         title: const Text('MiomiPay'),
                         subtitle: Text(
-                          AppConfig.isDemoMode ||
-                                  !MiomiPayConfig.isConfigured
-                              ? 'Mode simulasi - tidak ada uang sungguhan'
-                              : 'Payment gateway MiomiPay',
+                          BackendConfig.isConfigured
+                              ? 'Backend Laravel + MiomiPay'
+                              : AppConfig.isDemoMode ||
+                                      !MiomiPayConfig.isConfigured
+                                  ? 'Mode simulasi - tidak ada uang sungguhan'
+                                  : 'Payment gateway MiomiPay',
                         ),
                         trailing: const Icon(Icons.check_circle),
                       ),
